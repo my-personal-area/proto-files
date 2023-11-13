@@ -1,16 +1,15 @@
-
 syntax = "proto3";
+package email_sender_bridge;
 import "google/protobuf/empty.proto";
-package emailsenderbridge;
 
-message SendWelcomeEmailRequest {
-    string Email = 1;
-    string LangId = 2;
-    string FullName = 3;
-    string ConfirmationLink = 4;
+
+message SendResetPasswordEmailRequest{
+    string LanguageId = 1;
+    string Email = 2;    
+    string RecoveryCode = 3;
 }
 
-service EmailSenderBridgeGrpcService {
-    rpc SendWelcomeEmail(SendWelcomeEmailRequest) returns (google.protobuf.Empty);
+service EmailSenderBridge {
+    rpc SendResetPasswordEmail(SendResetPasswordEmailRequest) returns (google.protobuf.Empty);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
- }
+}
