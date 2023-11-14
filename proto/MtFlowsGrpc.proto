@@ -1,0 +1,44 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package mt;
+
+enum MtPlatform{
+    Mt4 = 0;
+    Mt5 = 1;
+}
+
+message GetMtAccountsListRequest{
+    string TraderId = 1;
+}
+
+message RegisterMtAccountRequest {
+    string TraderId = 1;
+    MtPlatform MtPlatform = 2;
+    bool IsLive = 3;
+    string AccountTypeId = 4;
+}
+
+message RegisterMtAccountResponse {
+    string AccountId = 1;
+}
+
+message MtAccountModel{
+    string TraderId = 1;
+    string AccountId = 2;
+    MtPlatform MtPlatform = 3;
+    bool IsLive = 4;
+    string AccountTypeId = 5;
+}
+
+message UpdatePasswordRequest{
+    string TraderId = 1;
+    string AccountId = 2;
+    string NewPassword = 3;
+}
+
+service MtFlowsGrpcService {
+    rpc Register(RegisterMtAccountRequest) returns (RegisterMtAccountResponse);
+    rpc Get(GetMtAccountsListRequest) returns (stream MtAccountModel);
+    rpc UpdatePassword(UpdatePasswordRequest) returns (google.protobuf.Empty);
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+ }
