@@ -28,6 +28,8 @@ message MtAccountGrpcModel{
     MtPlatform MtPlatform = 3;
     bool IsLive = 4;
     string AccountTypeId = 5;
+    string Currency = 6;
+    int64 Balance = 7;
 }
 
 message UpdatePasswordRequest{
