@@ -29,7 +29,7 @@ message MtAccountGrpcModel{
     bool IsLive = 4;
     string AccountTypeId = 5;
     string Currency = 6;
-    int64 Balance = 7;
+    double Balance = 7;
 }
 
 message UpdatePasswordRequest{
