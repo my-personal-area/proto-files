@@ -22,7 +22,7 @@ message RegisterMtAccountResponse {
     string AccountId = 1;
 }
 
-message MtAccountModel{
+message MtAccountGrpcModel{
     string TraderId = 1;
     string AccountId = 2;
     MtPlatform MtPlatform = 3;
@@ -38,7 +38,7 @@ message UpdatePasswordRequest{
 
 service MtFlowsGrpcService {
     rpc Register(RegisterMtAccountRequest) returns (RegisterMtAccountResponse);
-    rpc Get(GetMtAccountsListRequest) returns (stream MtAccountModel);
+    rpc Get(GetMtAccountsListRequest) returns (stream MtAccountGrpcModel);
     rpc UpdatePassword(UpdatePasswordRequest) returns (google.protobuf.Empty);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
  }
