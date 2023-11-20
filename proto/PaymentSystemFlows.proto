@@ -22,23 +22,17 @@ message SetPaymentSystemResponse{
 
 message PaymentSystemModel {
     string Id = 1;
-    optional string Code = 2;
-    optional string Name = 3;
-    optional string Description = 4;
-    optional bool IsMultiCurrency = 5;
-    optional fi32 BuyCommission = 6;
-    optional bool IsClientBuyCommission = 7;
-    optional fi32 SellCommission = 7;  
-    optional bool IsClientSellCommission = 7;
-    optional bool Active = 8;
-    optional int16 Sort = 8;
-    optional string CreatedBy = 9;
-    optional string CreatedDate = 10;
-    optional string ModifiedBy = 11;
-    optional string ModifiedDate = 12;
+    string Code = 2;
+    string Name = 3;
+    string Description = 4;
+    bool IsMultiCurrency = 5;
+    double BuyCommission = 6;
+    bool IsClientBuyCommission = 7;
+    double SellCommission = 8;  
+    bool IsClientSellCommission = 9;
+    bool Active = 10;
+    int32 Sort = 11;
 }
-
-
 
 service PaymentSystemService {
     rpc Get(GetPaymentSystemRequest) returns (GetPaymentSystemResponse);
