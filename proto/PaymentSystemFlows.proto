@@ -1,50 +1,47 @@
-
 syntax = "proto3";
 import "google/protobuf/empty.proto";
-package pd;
+package payment_system;
 
-message GetPersonalDataRequest {
+message GetPaymentSystemRequest {
     string Id = 1;
 }
 
-message GetPersonalDataResponse{
-    PersonalDataModel PersonalDataModel = 1;
+message GetPaymentSystemResponse{
+    PaymentSystemModel PaymentSystemModel = 1;
 }
 
-message SetPersonalDataRequest{
-    PersonalDataModel PersonalDataModel = 1;
+message SetPaymentSystemRequest{
+    PaymentSystemModel PaymentSystemModel = 1;
     string Who=2;
 }
 
 
-message SetPersonalDataResponse{
-    PersonalDataModel PersonalDataModel = 1;
+message SetPaymentSystemResponse{
+    PaymentSystemModel PaymentSystemModel = 1;
 }
 
-enum Sex{
-    Male =0;
-    Female=1;
-}
-
-message PersonalDataModel {
+message PaymentSystemModel {
     string Id = 1;
-    optional string Email = 2;
-    optional string FirstName = 3;
-    optional string LastName = 4;
-    optional string City = 5;
-    optional int64 DateOfBirth = 6;
-    optional string CountryOfResidence = 7;
-    optional string CountryOfCitizenship = 8;
-    optional string ZipCode = 9;
-    optional string Phone = 10;
-    optional string Address = 11;
-    optional Sex Sex = 12;
+    optional string Code = 2;
+    optional string Name = 3;
+    optional string Description = 4;
+    optional bool IsMultiCurrency = 5;
+    optional fi32 BuyCommission = 6;
+    optional bool IsClientBuyCommission = 7;
+    optional fi32 SellCommission = 7;  
+    optional bool IsClientSellCommission = 7;
+    optional bool Active = 8;
+    optional int16 Sort = 8;
+    optional string CreatedBy = 9;
+    optional string CreatedDate = 10;
+    optional string ModifiedBy = 11;
+    optional string ModifiedDate = 12;
 }
 
 
 
-service PersonalDataService {
-    rpc Get(GetPersonalDataRequest) returns (GetPersonalDataResponse);
-    rpc Set(SetPersonalDataRequest) returns (SetPersonalDataResponse);
+service PaymentSystemService {
+    rpc Get(GetPaymentSystemRequest) returns (GetPaymentSystemResponse);
+    rpc Set(SetPaymentSystemRequest) returns (SetPaymentSystemResponse);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
  }
