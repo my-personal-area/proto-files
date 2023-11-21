@@ -1,6 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
-package payment_system;
+package ps;
 
 message GetPaymentSystemRequest {
     string Id = 1;
