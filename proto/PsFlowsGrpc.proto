@@ -34,7 +34,7 @@ message PaymentSystemModel {
     int32 Sort = 11;
 }
 
-service PaymentSystemService {
+service PsFlowsGrpcService {
     rpc Get(GetPaymentSystemRequest) returns (GetPaymentSystemResponse);
     rpc Set(SetPaymentSystemRequest) returns (SetPaymentSystemResponse);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
